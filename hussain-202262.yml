@@ -1,0 +1,29 @@
+- name : Hussain-202262
+  hosts: all
+  
+  tasks:
+  
+    - name: Creating User
+      user:
+        name: hussain
+        password: $1$SomeSalt$UHLWyVyCOcAa873cDzlgU1
+
+    - name: Creating directory
+      file:
+        path: hussain_202262
+        state: directory
+        
+    - name: Installing packages
+      apt:
+        update_cache: yes
+        name:
+          - nginx
+          - nano
+        state: present
+
+    - name: Uninstalling nano
+      apt:
+        name:
+          - nano
+        state: absent
+        
